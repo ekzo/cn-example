@@ -1,0 +1,2 @@
+tornado==4.2
+git+https://github.com/Apination/cn.git@master#egg=cn-0.2.19
