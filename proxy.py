@@ -13,8 +13,14 @@ from io import BytesIO
 
 
 class MyConnectorProxy(AsyncClientMixin, BaseProxy):
+    """
+    Skeleton of Connector Proxy class
+    """
     @tornado.gen.coroutine
     def register_self(self):
+        """
+        Register connector in Apination system
+        """
         super().register_self()
         client = self.get_async_http_client()
         response = yield client.fetch(
@@ -26,17 +32,22 @@ class MyConnectorProxy(AsyncClientMixin, BaseProxy):
 
     @tornado.gen.coroutine
     def action_my_action(self, *args, **kwargs):
+        """
+        Skeleton of connector action
+        """
         user_id = kwargs.get('user_id')
         return {"status": "success", "data": {"action": "my action", "user_id": user_id}}
 
     @tornado.gen.coroutine
     def trigger_my_trigger(self, *args, **kwargs):
+        """
+        Skeleton of connector trigger
+        """
         return {"status": "success", "data": {"trigger": "my trigger"}}
 
     @tornado.gen.coroutine
     def method_my_method(self, *args, **kwargs):
+        """
+        Skeleton of connector method
+        """
         return {"status": "success", "data": {"hello": "world", "method": "my method"}}
-
-    def _get_buffer(self, data):
-        buffer = BytesIO(json_encode(data).encode())
-        return buffer
