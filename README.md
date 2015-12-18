@@ -4,15 +4,13 @@ Basic example of Apination connector
 ## Settings
 You can find connector settings in `settings.py` file
 
-`PORT`
+`PORT` - port of your http webserver
 
-`PROXIES_REGISTER_AFTER_SECONDS`
+`HUB_URL` - url to Apination system
 
-`HUB_URL`
+`AUTH_PUBLIC` - Public authorization key. You can get it from Apination administrator
 
-`AUTH_PUBLIC`
-
-`AUTH_SECRET`
+`AUTH_SECRET` - Secret authorization key. You can get it from Apination administrator
 
 ## Run
 ```
