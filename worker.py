@@ -49,13 +49,18 @@ class MyConnectorMethodsHandler(BaseHandler):
     @tornado.web.asynchronous
     @tornado.gen.coroutine
     def get(self):
+        # Get method name
         method_name = self.get_argument('method')
+        # Get user_id parameter
         user_id = self.get_argument('user_id')
+        # Create instance of connector object
         my_conn = MyConnectorProxy()
+        # Search method callback in connector object
         method = getattr(my_conn, 'method_%s' % method_name, None)
         kwargs = {
             'user_id': user_id
         }
+        # Run method
         if method:
             response = yield method(**kwargs)
             self.response_handler(response)
@@ -83,14 +88,13 @@ class MyConnectorTriggersHandler(BaseHandler):
 
 app_settings = {}
 
-
+# Generate tornado webserver application
 def get_application(app_settings):
     return tornado.web.Application([
         (r"/actions", MyConnectorActionsHandler),
         (r"/methods", MyConnectorActionsHandler),
         (r"/triggers", MyConnectorTriggersHandler),
     ], **app_settings)
-
 
 application = get_application(app_settings)
 
@@ -114,5 +118,6 @@ def main():
 
     ioloop.start()
 
+# Run main() on script start
 if __name__ == "__main__":
     main()
