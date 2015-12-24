@@ -11,4 +11,4 @@ HUB_GET_TRIGGER_LIST_URL = HUB_URL + os.environ.get('HUB_GET_TRIGGER_LIST_URL', 
 AUTH_PUBLIC = os.environ.get('AUTH_PUBLIC', '<get from Apination administrator>')
 AUTH_SECRET = os.environ.get('AUTH_SECRET', '<get from Apination administrator>')
 
-AUTH_CHECK_TOKEN_URL = 'https://google.com'
+AUTH_CHECK_TOKEN_URL = '<get from Apination administrator>'
