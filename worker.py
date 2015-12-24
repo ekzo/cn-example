@@ -5,9 +5,8 @@ import tornado.web
 import tornado
 from cn.decorators import authentication
 from cn.mixins import AsyncClientMixin
-from proxy import MlsTriangleProxy, MyConnectorProxy
+from proxy import MyConnectorProxy
 from settings import *
-from utils import clear_runned_triggers
 
 ioloop = tornado.ioloop.IOLoop.instance()
 
@@ -28,7 +27,7 @@ class MyConnectorActionsHandler(BaseHandler):
     @authentication(AUTH_CHECK_TOKEN_URL)
     @tornado.web.asynchronous
     @tornado.gen.coroutine
-    def post(self):
+    def get(self):
         # Get request params
         kwargs = json_decode(self.request.body)
         # Create proxy object instance
@@ -92,7 +91,7 @@ app_settings = {}
 def get_application(app_settings):
     return tornado.web.Application([
         (r"/actions", MyConnectorActionsHandler),
-        (r"/methods", MyConnectorActionsHandler),
+        (r"/methods", MyConnectorMethodsHandler),
         (r"/triggers", MyConnectorTriggersHandler),
     ], **app_settings)
 
