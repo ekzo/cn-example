@@ -12,9 +12,17 @@ RUN apt-get update && \
     apt-get install -y --force-yes libcurl4-gnutls-dev && \
     apt-get install -y --force-yes libcurl4-openssl-dev
 
+
+
+COPY . /home/r
+WORKDIR /home/r
+
+RUN cd ..
+
 RUN wget https://github.com/Apination/cn/archive/master.tar.gz && \
     tar xzf master.tar.gz
-    
+
+RUN cd r
 
 RUN pip3 install -r requirements.txt
 
