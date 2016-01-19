@@ -104,7 +104,7 @@ def main():
     """
     
     print("My Connector")
-
+    print(PORT)
     # Create instance of proxy
     proxy = MyConnectorProxy()
 
